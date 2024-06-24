@@ -1,3 +1,5 @@
+package ObjectOriented10128;
+
 public class Buyer extends Person {
 	private CartListNode first;
 	private CartListNode last;
@@ -15,28 +17,20 @@ public class Buyer extends Person {
 
 	public void addCart() {
 		if (this.balance == 0) {
-			// if (this.first == null) {
-			// this.first = new CartListNode();
-			// this.last = this.first;
-			// } else {
 			CartListNode node = this.last;
-			//while (node.getNext() != null) { // keep iterating while this is not the last node
-				//node = node.getNext();
-				// }
-				node.setNext(new CartListNode());
-				this.last = node.getNext();
+			node.setNext(new CartListNode());
+			this.last = node.getNext();
 
-			}
-			this.ordersCount++;
 		}
-	//}
+		this.ordersCount++;
+	}
 
 	public void setProductToCart(Product pr) {
 		this.last.getCart().addProduct(pr);
 		this.balance += pr.getPrice();
 
 	}
-	
+
 	public Cart[] getAllCarts() {
 		Cart[] rv = new Cart[this.ordersCount];
 		int i = 0;
@@ -45,8 +39,6 @@ public class Buyer extends Person {
 		}
 		return rv;
 	}
-	
-	
 
 	public Cart getCurrentCart() {
 		return this.last.getCart();
@@ -67,6 +59,5 @@ public class Buyer extends Person {
 	public void setOrdersCount(int ordersCount) {
 		this.ordersCount = ordersCount;
 	}
-	
 
 }

@@ -1,3 +1,5 @@
+package ObjectOriented10128;
+
 public class Cart {
 
 	private ProductListNode first;
@@ -8,8 +10,9 @@ public class Cart {
 		this.productCount = 0;
 		this.date = null;
 		this.first = null;
-		
+
 	}
+
 	public int getProductCount() {
 		return productCount;
 	}
@@ -47,6 +50,7 @@ public class Cart {
 		}
 		return rv;
 	}
+
 	@Override
 	public String toString() {
 		return "Payment Date: " + date;

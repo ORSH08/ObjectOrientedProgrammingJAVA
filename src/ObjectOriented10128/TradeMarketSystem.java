@@ -1,6 +1,8 @@
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+package ObjectOriented10128;
+
 import java.util.Optional;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 public class TradeMarketSystem implements TradeMarket {
 	private Buyer[] buyers;
@@ -15,8 +17,8 @@ public class TradeMarketSystem implements TradeMarket {
 		this.countSellers = 0;
 	}
 
-	@Override
-	public Buyer[] doubleBuyersArraySize() {
+	//@Override
+	private Buyer[] doubleBuyersArraySize() {
 		// TODO Auto-generated method stub
 		Buyer[] newArray = new Buyer[this.countBuyers * 2];
 		for (int i = 0; i < this.countBuyers; i++) {
@@ -26,8 +28,8 @@ public class TradeMarketSystem implements TradeMarket {
 		return newArray;
 	}
 
-	@Override
-	public Seller[] doubleSellersArraySize() {
+	//@Override
+	private Seller[] doubleSellersArraySize() {
 		// TODO Auto-generated method stub
 		Seller[] newArray = new Seller[this.countSellers * 2];
 		for (int i = 0; i < this.countSellers; i++) {
@@ -73,9 +75,9 @@ public class TradeMarketSystem implements TradeMarket {
 	}
 
 	@Override
-	public void addProductToSeller(String itemName, String price, Category category, int index) {
+	public void addProductToSeller(Product pr, int index) {
 		// TODO Auto-generated method stub
-		Product pr = new Product(itemName, Double.valueOf(price), category);
+		//Product pr = new Product(itemName, Double.valueOf(price), category);
 		sellers[index].setProduct(pr);
 
 	}
@@ -97,21 +99,21 @@ public class TradeMarketSystem implements TradeMarket {
 	@Override
 	public void payment(int buyerIndex) {
 		// TODO Auto-generated method stub
-		
+
 		buyers[buyerIndex].setBalance(0);
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-		String formatedDate= dtf.format(LocalDateTime.now());
+		String formatedDate = dtf.format(LocalDateTime.now());
 		buyers[buyerIndex].getCurrentCart().setDate(formatedDate);
 		buyers[buyerIndex].addCart();
-		
+
 	}
 
 	@Override
 	public Buyer[] getBuyers() {
 		// TODO Auto-generated method stub
 		Buyer[] copyOfBuyers = new Buyer[countBuyers];
-		for(int index=0;index<countBuyers;index++) {
-			copyOfBuyers[index]=buyers[index];
+		for (int index = 0; index < countBuyers; index++) {
+			copyOfBuyers[index] = buyers[index];
 		}
 		return copyOfBuyers;
 
@@ -121,11 +123,10 @@ public class TradeMarketSystem implements TradeMarket {
 	public Seller[] getSellers() {
 		// TODO Auto-generated method stub
 		Seller[] copyOfSellers = new Seller[countSellers];
-		for(int index=0;index<countSellers;index++) {
-			copyOfSellers[index]=sellers[index];
+		for (int index = 0; index < countSellers; index++) {
+			copyOfSellers[index] = sellers[index];
 		}
 		return copyOfSellers;
-	
 
 	}
 
@@ -156,4 +157,5 @@ public class TradeMarketSystem implements TradeMarket {
 		return sellers[index].getAllProducts();
 
 	}
+
 }

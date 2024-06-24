@@ -1,3 +1,5 @@
+package ObjectOriented10128;
+
 import java.util.Optional;
 
 public class Seller extends Person {
@@ -30,9 +32,9 @@ public class Seller extends Person {
 
 	public Optional<Product> getProductByName(String prName) {
 		for (ProductListNode node = this.first; node != null; node = node.getNext()) {
-			if (node.getProduct().getItemName().equals(prName)){
+			if (node.getProduct().getItemName().equals(prName)) {
 				Product pr = node.getProduct();
-				
+
 				return Optional.of(pr);
 			}
 		}

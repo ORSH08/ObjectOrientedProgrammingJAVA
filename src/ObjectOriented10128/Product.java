@@ -1,3 +1,5 @@
+package ObjectOriented10128;
+
 public class Product {
 
 	private String itemName;
@@ -36,6 +38,6 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "itemName: " + itemName + ", price: " + price + ", category: " + category ;
+		return "itemName: " + itemName + ", price: " + price + ", category: " + category;
 	}
 }
