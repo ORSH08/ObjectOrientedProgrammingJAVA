@@ -12,7 +12,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		//
 		TradeMarket tradeMarket = new TradeMarketSystem();
 
 		try (Scanner scanner = new Scanner(System.in)) {
