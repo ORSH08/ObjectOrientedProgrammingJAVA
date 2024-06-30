@@ -1,8 +1,3 @@
-
-//Or Shemesh 209523489
-//Gal Shemesh 322387481
-//lecturer - Eyal
-
 package ObjectOriented10128;
 
 import java.util.Arrays;
