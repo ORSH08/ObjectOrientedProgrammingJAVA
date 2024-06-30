@@ -5,6 +5,7 @@ public class Buyer extends Person {
 	private CartListNode last;
 	private double balance;
 	private int ordersCount;
+	private Address address;
 
 	public Buyer(String buyerUserName) {
 		super(buyerUserName);
@@ -12,7 +13,16 @@ public class Buyer extends Person {
 		this.last = first;
 		this.ordersCount = 0;
 		this.balance = 0;
+		this.address = null;
 
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public void addCart() {
@@ -58,6 +68,11 @@ public class Buyer extends Person {
 
 	public void setOrdersCount(int ordersCount) {
 		this.ordersCount = ordersCount;
+	}
+
+	@Override
+	public String toString() {
+		return "userName:" + userName + "\naddress: " + address;
 	}
 
 }

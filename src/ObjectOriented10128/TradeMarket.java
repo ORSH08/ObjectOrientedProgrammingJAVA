@@ -15,8 +15,10 @@ public interface TradeMarket {
 
 	public Seller[] getSellers();
 
-	public int isExist(String userName, String choice);
-
 	public Product[] getSellerProducts(int index);
+
+	public int isExistSellers(String userName);
+
+	public int isExistBuyers(String userName);
 
 }

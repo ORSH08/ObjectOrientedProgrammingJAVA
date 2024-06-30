@@ -28,6 +28,6 @@ public abstract class Person {
 
 	@Override
 	public String toString() {
-		return "Username: " + userName + " ,Password: " + password + "\n";
+		return "Username: " + userName + "\n";
 	}
 }

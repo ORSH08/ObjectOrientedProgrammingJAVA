@@ -5,12 +5,22 @@ public class Cart {
 	private ProductListNode first;
 	private int productCount;
 	private String date;
+	private double cartPrice;
 
 	public Cart() {
 		this.productCount = 0;
 		this.date = null;
 		this.first = null;
+		this.cartPrice = 0;
 
+	}
+
+	public double getCartPrice() {
+		return cartPrice;
+	}
+
+	public void setCartPrice(double cartPrice) {
+		this.cartPrice = cartPrice;
 	}
 
 	public int getProductCount() {
@@ -53,7 +63,7 @@ public class Cart {
 
 	@Override
 	public String toString() {
-		return "Payment Date: " + date;
+		return "Payment Date: " + date + "\nCart price: " + cartPrice;
 	}
 
 }

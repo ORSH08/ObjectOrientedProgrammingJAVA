@@ -12,7 +12,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//
+
 		TradeMarket tradeMarket = new TradeMarketSystem();
 
 		try (Scanner scanner = new Scanner(System.in)) {
@@ -121,6 +121,17 @@ public class Main {
 		}
 		System.out.println("Please enter the buyer password");
 		buyer.setPassword(scanner.nextLine());
+		System.out.println("plaese enter your address: ");
+		System.out.println("please enter country: ");
+		String country = scanner.nextLine();
+		System.out.println("please enter city: ");
+		String city = scanner.nextLine();
+		System.out.println("please enter street: ");
+		String street = scanner.nextLine();
+		System.out.println("please enter building number: ");
+		String buildingNum = scanner.nextLine();
+		Address ad = new Address(street, buildingNum, city, country);
+		buyer.setAddress(ad);
 		System.out.println("Buyer added to market");
 
 	}
@@ -131,11 +142,11 @@ public class Main {
 			System.out.println("Please enter the username of the seller to add product");
 			String sellerNameToAddProduct = scanner.nextLine();
 			// check input
-			int index = tradeMarket.isExist(sellerNameToAddProduct, "sellers");
+			int index = tradeMarket.isExistSellers(sellerNameToAddProduct);
 			while (index == -1) {
 				System.out.println("Seller not found, please try again");
 				sellerNameToAddProduct = scanner.nextLine();
-				index = tradeMarket.isExist(sellerNameToAddProduct, "sellers");
+				index = tradeMarket.isExistSellers(sellerNameToAddProduct);
 			}
 
 			System.out.println("Please enter product name");
@@ -164,11 +175,11 @@ public class Main {
 			displayBuyersNames(tradeMarket);
 			String buyerNameToAddProduct = scanner.nextLine();
 			// check input
-			int indexBuyer = tradeMarket.isExist(buyerNameToAddProduct, "buyers");
+			int indexBuyer = tradeMarket.isExistBuyers(buyerNameToAddProduct);
 			while (indexBuyer == -1) {
 				System.out.println("Buyer not found, please try again");
 				buyerNameToAddProduct = scanner.nextLine();
-				indexBuyer = tradeMarket.isExist(buyerNameToAddProduct, "buyers");
+				indexBuyer = tradeMarket.isExistBuyers(buyerNameToAddProduct);
 			}
 			if (tradeMarket.getSellers().length == 0) {
 				System.out.println("There are no sellers in the market");
@@ -177,11 +188,11 @@ public class Main {
 				displaySellersNames(tradeMarket);
 				String sellerNameToChooseFrom = scanner.nextLine();
 				// check input
-				int indexSeller = tradeMarket.isExist(sellerNameToChooseFrom, "sellers");
+				int indexSeller = tradeMarket.isExistSellers(sellerNameToChooseFrom);
 				while (indexSeller == -1) {
 					System.out.println("Seller not found, please try again");
 					sellerNameToChooseFrom = scanner.nextLine();
-					indexSeller = tradeMarket.isExist(sellerNameToChooseFrom, "sellers");
+					indexSeller = tradeMarket.isExistSellers(sellerNameToChooseFrom);
 				}
 
 				System.out.println("the products you can choose from are:");
@@ -216,11 +227,11 @@ public class Main {
 		if (tradeMarket.getBuyers().length != 0) {
 			System.out.println("Please enter buyer name to pay for");
 			String buyerNameToPayFor = scanner.nextLine();
-			int index = tradeMarket.isExist(buyerNameToPayFor, "buyers");
+			int index = tradeMarket.isExistBuyers(buyerNameToPayFor);
 			while (index == -1) {
 				System.out.println("Buyer not found, please try again");
 				buyerNameToPayFor = scanner.nextLine();
-				index = tradeMarket.isExist(buyerNameToPayFor, "buyers");
+				index = tradeMarket.isExistBuyers(buyerNameToPayFor);
 
 			}
 			Buyer buyer = tradeMarket.getBuyers()[index];
@@ -289,13 +300,13 @@ public class Main {
 				if (currentCart.getAllProducts().length == 0) {
 					System.out.println("No products in current cart\n");
 				} else {
-					System.out.println("The current balance is: " + buyer.getBalance());
+					System.out.println("balance: " + buyer.getBalance());
 					System.out.println("The items in cart is: ");
 					System.out.println(Arrays.toString(currentCart.getAllProducts()));
 
 				}
 				System.out.println();
-				System.out.println("The orders history is: ");
+				System.out.println("The orders history is:\n");
 				Cart[] history = buyer.getAllCarts();
 				if (history.length == 0) {
 					System.out.println("No prior orders\n");

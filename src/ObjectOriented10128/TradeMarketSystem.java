@@ -17,7 +17,7 @@ public class TradeMarketSystem implements TradeMarket {
 		this.countSellers = 0;
 	}
 
-	//@Override
+	// @Override
 	private Buyer[] doubleBuyersArraySize() {
 		// TODO Auto-generated method stub
 		Buyer[] newArray = new Buyer[this.countBuyers * 2];
@@ -28,7 +28,7 @@ public class TradeMarketSystem implements TradeMarket {
 		return newArray;
 	}
 
-	//@Override
+	// @Override
 	private Seller[] doubleSellersArraySize() {
 		// TODO Auto-generated method stub
 		Seller[] newArray = new Seller[this.countSellers * 2];
@@ -77,7 +77,7 @@ public class TradeMarketSystem implements TradeMarket {
 	@Override
 	public void addProductToSeller(Product pr, int index) {
 		// TODO Auto-generated method stub
-		//Product pr = new Product(itemName, Double.valueOf(price), category);
+		// Product pr = new Product(itemName, Double.valueOf(price), category);
 		sellers[index].setProduct(pr);
 
 	}
@@ -99,7 +99,7 @@ public class TradeMarketSystem implements TradeMarket {
 	@Override
 	public void payment(int buyerIndex) {
 		// TODO Auto-generated method stub
-
+		buyers[buyerIndex].getCurrentCart().setCartPrice(buyers[buyerIndex].getBalance());
 		buyers[buyerIndex].setBalance(0);
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		String formatedDate = dtf.format(LocalDateTime.now());
@@ -130,20 +130,22 @@ public class TradeMarketSystem implements TradeMarket {
 
 	}
 
-	@Override
-	public int isExist(String userName, String choice) {
-		// TODO Auto-generated method
-		if (choice == "buyers") {
-			for (int i = 0; i < this.countBuyers; i++) {
-				if (userName.equals(this.buyers[i].getUserName())) {
-					return i;
-				}
+	public int isExistSellers(String userName) {
+
+		for (int i = 0; i < this.countSellers; i++) {
+			if (userName.equals(this.sellers[i].getUserName())) {
+				return i;
 			}
-		} else {
-			for (int i = 0; i < this.countSellers; i++) {
-				if (userName.equals(this.sellers[i].getUserName())) {
-					return i;
-				}
+		}
+		return -1;
+
+	}
+
+	public int isExistBuyers(String userName) {
+
+		for (int i = 0; i < this.countBuyers; i++) {
+			if (userName.equals(this.buyers[i].getUserName())) {
+				return i;
 			}
 		}
 
